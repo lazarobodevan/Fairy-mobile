@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+import 'package:mobile/theme/theme_colors.dart';
+import 'package:mobile/theme/typography_styles.dart';
+
+class CustomButton extends StatelessWidget {
+  final Function() onTap;
+  final String text;
+  final bool isActive;
+  final bool isLoading;
+
+  const CustomButton(
+      {super.key,
+      required this.onTap,
+      required this.text,
+      this.isActive = true,
+      this.isLoading = false});
+
+  @override
+  Widget build(BuildContext context) {
+    return Ink(
+      width: MediaQuery.of(context).size.width,
+      height: 48,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(14),
+        color: isActive ? ThemeColors.primary3 : ThemeColors.gray4,
+      ),
+      child: GestureDetector(
+        onTap: isActive && !isLoading ? onTap : (){},
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+          width: MediaQuery.of(context).size.width,
+          height: 48,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: isActive ? ThemeColors.primary3 : ThemeColors.gray4,
+          ),
+          child: Center(
+            child: Text(
+              text,
+              style: TypographyStyles.label2().copyWith(color: ThemeColors.white),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
