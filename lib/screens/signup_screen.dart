@@ -1,9 +1,11 @@
 import 'package:dynamic_stepper/dynamic_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/shared/Enums/user_type.dart';
+import 'package:mobile/shared/components/action_button.dart';
+import 'package:mobile/shared/components/custom_app_bar.dart';
 import 'package:mobile/shared/components/custom_button.dart';
 import 'package:mobile/shared/components/custom_link.dart';
-import 'package:mobile/shared/components/text_field.dart';
+import 'package:mobile/shared/components/custom_text_field.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
 
@@ -22,15 +24,18 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 120, 20, 0),
+        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
         child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
             children: [
               Container(
                 width: 245,
                 child: Column(
                   children: [
+                    const SizedBox(height: 20,),
                     Text(
                       "Criar uma Conta",
                       style: TypographyStyles.headline2(),
@@ -50,6 +55,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     colorScheme:
                         ColorScheme.light(primary: ThemeColors.primary3)),
                 child: DynamicStepper(
+                  physics: NeverScrollableScrollPhysics(),
                   onStepContinue: () {
                     setState(() {
                       if (selectedUserType == UserType.PRODUCER && currentStep != 3) {
@@ -170,19 +176,23 @@ class _SignupScreenState extends State<SignupScreen> {
                       DynamicStep(
                         title: Text("Localização"),
                         isActive: currentStep == 2,
-                        content: const Column(
+                        content: Column(
                           children: [
-                            Text(
+                            const Text(
                                 "Para que as pessoas possam te encontrar, é preciso que diga onde você atende. "
                                 "Evite colocar o endereço residencial, e prefira ambientes públicos."),
+                            const SizedBox(height: 16,),
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.info_outline,
                                   color: Colors.blue,
                                 ),
+                                const SizedBox(width: 7,),
+                                ActionButton(text: "Adicionar Localização", onTap: (){Navigator.of(context).pushNamed("/addLocation");}),
                               ],
-                            )
+                            ),
+                            const SizedBox(height: 16,),
                           ],
                         ),
                       ),
@@ -213,7 +223,8 @@ class _SignupScreenState extends State<SignupScreen> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: CustomButton(isActive: isTermsAndConditionsAccepted,text: "Cadastrar",onTap: (){}),
-              )
+              ),
+              const SizedBox(height: 40,),
             ],
           ),
         ),

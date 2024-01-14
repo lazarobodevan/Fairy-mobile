@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/screens/login/login_screen.dart';
+import 'package:mobile/screens/add_location/add_location_screen.dart';
+import 'package:mobile/screens/home/producer/producer_home_screen.dart';
+import 'package:mobile/screens/location_description/location_description_screen.dart';
+import 'package:mobile/screens/login_screen.dart';
 import 'package:mobile/screens/signup_screen.dart';
 
 void main() {
@@ -33,7 +36,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SignupScreen(),
+      initialRoute: "/",
+      routes: {
+        "/": (context) => const LoginScreen(),
+        "/signup":(context) => const SignupScreen(),
+        "/home":(context) => const ProducerHomeScreen(),
+        "/addLocation":(context) => const AddLocationScreen(),
+        "/locationDescription":(context) => const LocationDescriptionScreen(),
+      },
     );
   }
 }

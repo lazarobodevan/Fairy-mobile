@@ -17,19 +17,15 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Ink(
-      width: MediaQuery.of(context).size.width,
-      height: 48,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(14),
-        color: isActive ? ThemeColors.primary3 : ThemeColors.gray4,
-      ),
-      child: GestureDetector(
-        onTap: isActive && !isLoading ? onTap : (){},
-        child: AnimatedContainer(
+    return Stack(
+      children: [
+        AnimatedContainer(
           duration: Duration(milliseconds: 500),
           curve: Curves.easeInOut,
-          width: MediaQuery.of(context).size.width,
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
           height: 48,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14),
@@ -38,11 +34,21 @@ class CustomButton extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: TypographyStyles.label2().copyWith(color: ThemeColors.white),
+              style: TypographyStyles.label2().copyWith(
+                  color: ThemeColors.white),
             ),
           ),
         ),
-      ),
+        Positioned.fill(
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: isActive ? onTap : null,
+              borderRadius: BorderRadius.circular(14),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

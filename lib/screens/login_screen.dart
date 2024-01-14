@@ -4,7 +4,7 @@ import 'package:mobile/shared/components/custom_link.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
 
-import '../../shared/components/text_field.dart';
+import '../shared/components/custom_text_field.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -33,14 +33,18 @@ class LoginScreen extends StatelessWidget {
                   color: ThemeColors.gray6,
                 ),
               ),
-              const SizedBox(height: 40,),
+              const SizedBox(
+                height: 40,
+              ),
               CustomTextField(
                 controller: _emailController,
                 hintText: "exemplo@gmail.com",
                 prefixIcon: const Icon(Icons.mail),
                 isObscureText: false,
               ),
-              const SizedBox(height: 16,),
+              const SizedBox(
+                height: 16,
+              ),
               CustomTextField(
                 controller: _emailController,
                 hintText: "Senha",
@@ -48,20 +52,34 @@ class LoginScreen extends StatelessWidget {
                 isObscureText: true,
                 isShowSuffixIcon: true,
               ),
-              const SizedBox(height: 16,),
+              const SizedBox(
+                height: 16,
+              ),
               Align(
                 alignment: Alignment.centerRight,
-                child: CustomLink(text:"Esqueci a senha", onTap: (){},),
+                child: CustomLink(
+                  text: "Esqueci a senha",
+                  onTap: () {},
+                ),
               ),
-              const SizedBox(height: 30,),
-              CustomButton(text: "Entrar",onTap: (){}),
-              const SizedBox(height: 30,),
+              const SizedBox(
+                height: 30,
+              ),
+              CustomButton(text: "Entrar", onTap: () {Navigator.of(context).pushNamed("/home");}),
+              const SizedBox(
+                height: 30,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Não tem uma conta?", style: TypographyStyles.label3(),),
-                  const SizedBox(width: 5,),
-                  CustomLink(text: "Cadastre-se", onTap: (){})
+                  Text(
+                    "Não tem uma conta?",
+                    style: TypographyStyles.label3(),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  CustomLink(text: "Cadastre-se", onTap: () {Navigator.of(context).pushNamed("/signup");})
                 ],
               )
             ],
