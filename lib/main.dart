@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/add_location/add_location_screen.dart';
-import 'package:mobile/screens/home/producer/producer_home_screen.dart';
 import 'package:mobile/screens/location_description/location_description_screen.dart';
 import 'package:mobile/screens/login_screen.dart';
+import 'package:mobile/screens/nav_pages/main_nav_page.dart';
 import 'package:mobile/screens/signup_screen.dart';
+
+import 'screens/nav_pages/home/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context) => const LoginScreen(),
         "/signup":(context) => const SignupScreen(),
-        "/home":(context) => ProducerHomeScreen(),
+        "/home":(context) => NavigationPage(),
         "/addLocation":(context) => const AddLocationScreen(),
         "/locationDescription":(context) => const LocationDescriptionScreen(),
       },

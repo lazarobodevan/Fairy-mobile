@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mobile/screens/home/components/svg_category_tile.dart';
-import 'package:mobile/shared/components/custom_button.dart';
 import 'package:mobile/shared/components/custom_label.dart';
 import 'package:mobile/shared/components/custom_text_field.dart';
 import 'package:mobile/shared/components/product_tile.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
 
-class ProducerHomeScreen extends StatelessWidget {
-  ProducerHomeScreen({super.key});
+import 'components/svg_category_tile.dart';
+
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
   var categories = [
     {"name": "Frutas", "image": "assets/icons/fruits_icon.svg"},
