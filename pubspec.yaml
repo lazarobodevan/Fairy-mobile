@@ -34,6 +34,8 @@ dependencies:
   dynamic_stepper: ^0.0.1
   flutter_svg: ^2.0.9
   expandable_text: 2.3.0
+  dotted_line: ^3.2.2
+  lottie: ^3.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -66,6 +68,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/lotties/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -92,3 +95,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+

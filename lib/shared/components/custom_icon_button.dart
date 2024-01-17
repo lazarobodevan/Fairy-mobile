@@ -3,13 +3,14 @@ import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
 
 class CustomIconButton extends StatelessWidget {
-  const CustomIconButton({super.key});
+  final Function() onTap;
+  const CustomIconButton({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: InkWell(
-        onTap: () {},
+        onTap: onTap,
         child: Ink(
           width: 150,
           height: 40,

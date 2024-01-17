@@ -1,7 +1,7 @@
 import 'package:dynamic_stepper/dynamic_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/shared/Enums/user_type.dart';
-import 'package:mobile/shared/components/action_button.dart';
+import 'package:mobile/screens/signup/components/add_location_button.dart';
 import 'package:mobile/shared/components/custom_app_bar.dart';
 import 'package:mobile/shared/components/custom_button.dart';
 import 'package:mobile/shared/components/custom_link.dart';
@@ -189,7 +189,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   color: Colors.blue,
                                 ),
                                 const SizedBox(width: 7,),
-                                ActionButton(text: "Adicionar Localização", onTap: (){Navigator.of(context).pushNamed("/addLocation");}),
+                                AddLocationButton(text: "Adicionar Localização", onTap: (){Navigator.of(context).pushNamed("/addLocation");}),
                               ],
                             ),
                             const SizedBox(height: 16,),

@@ -1,5 +1,6 @@
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/product_details_screen/components/confirm_order_bottom_widget.dart';
 import 'package:mobile/screens/product_details_screen/components/producer_details_tile.dart';
 import 'package:mobile/shared/components/custom_app_bar.dart';
 import 'package:mobile/shared/components/custom_dropdown_button.dart';
@@ -15,6 +16,12 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+
+  _showBottomSheet(){
+    showModalBottomSheet(context: context, builder: (BuildContext context){
+      return SizedBox(height:300,child: ConfirmOrderBottomWidget());
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -148,7 +155,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Text("R\$5,98", style: TypographyStyles.label2(),)
                     ],
                   ),
-                  CustomIconButton()
+                  CustomIconButton(onTap: _showBottomSheet,)
                 ],
               ),
             ),
