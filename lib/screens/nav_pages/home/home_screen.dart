@@ -177,17 +177,17 @@ class HomeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      ProductTile(),
+                      Flexible(child: ProductTile()),
                       SizedBox(width: 10,),
-                      ProductTile(),
+                      Flexible(child: ProductTile()),
                     ],
                   ),
                   SizedBox(height: 15,),
                   Row(
                     children: [
-                      ProductTile(),
+                      Flexible(child: ProductTile()),
                       SizedBox(width: 10,),
-                      ProductTile(),
+                      Flexible(child: ProductTile()),
                     ],
                   )
                 ],

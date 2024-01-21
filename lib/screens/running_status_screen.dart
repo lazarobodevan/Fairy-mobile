@@ -80,7 +80,7 @@ class _RunningStatusScreenState extends State<RunningStatusScreen> {
                                   .copyWith(color: Colors.black),
                               children: [
                                 TextSpan(
-                                    text: "Encomendas",
+                                    text: "Pedidos",
                                     style: TypographyStyles.paragraph2()
                                         .copyWith(color: ThemeColors.primary3))
                               ]),
