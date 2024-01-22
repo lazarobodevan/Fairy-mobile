@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/nav_pages/catalog/components/products_tab.dart';
 import 'package:mobile/shared/components/custom_text_field.dart';
+import 'package:mobile/shared/components/filter_chips_list.dart';
 import 'package:mobile/shared/components/product_tile.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
@@ -14,7 +15,7 @@ class CatalogScreen extends StatefulWidget{
 
 class _CatalogScreenState extends State<CatalogScreen> with TickerProviderStateMixin{
   late final TabController _tabController;
-  double appBarHeight = 150;
+  double appBarHeight = 180;
 
   @override
   void initState() {
@@ -63,6 +64,8 @@ class _CatalogScreenState extends State<CatalogScreen> with TickerProviderStateM
                             Text("Produtores", style: TypographyStyles.paragraph3()),
                           ],
                         ),
+                        const SizedBox(height: 20,),
+                        FilterChipsList(),
                       ],
                     ),
                   ),
@@ -73,7 +76,9 @@ class _CatalogScreenState extends State<CatalogScreen> with TickerProviderStateM
           body: TabBarView(
             controller: _tabController,
             children: [
-              Padding(padding:EdgeInsets.fromLTRB(20,10,20,0),child: ProductsTab()),
+              Padding(padding:EdgeInsets.fromLTRB(20,0,20,0),
+                child: ProductsTab(),
+              ),
               Container(child: Text("oi")),
             ],
           ),

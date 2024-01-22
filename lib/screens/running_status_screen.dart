@@ -91,7 +91,7 @@ class _RunningStatusScreenState extends State<RunningStatusScreen> {
                   ],
                 ),
               ),
-              CustomButton(onTap: () {}, text: "Ver encomenda"),
+               !isLoading ? CustomButton(onTap: () {Navigator.pushReplacementNamed(context, "/home");}, text: "Ver encomenda") : const SizedBox(),
             ],
           ),
         ),
