@@ -12,10 +12,12 @@ class FilterChipsList extends StatefulWidget {
 class _FilterChipsListState extends State<FilterChipsList> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: 25,
+      width: double.maxFinite,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.symmetric(horizontal: 20),
         itemCount: 6,
         itemBuilder: (context, index){
           return CustomFilterChip(onSelected: (){},isSelected: true,icon: Icons.keyboard_arrow_down_rounded,text: "Ordenar",);

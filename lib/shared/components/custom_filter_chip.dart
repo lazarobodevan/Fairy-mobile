@@ -22,37 +22,39 @@ class CustomFilterChip extends StatefulWidget {
 class _CustomFilterChipState extends State<CustomFilterChip> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: widget.onSelected,
-      borderRadius: BorderRadius.circular(40),
-      child: Ink(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(
-              border: Border.all(
-                  color: widget.isSelected
-                      ? ThemeColors.primary4
-                      : ThemeColors.gray4),
-              borderRadius: BorderRadius.circular(40)),
-          child: Row(
-            children: [
-              Text(
-                widget.text,
-                style: TypographyStyles.paragraph4().copyWith(
+    return Material(
+      child: InkWell(
+        onTap: widget.onSelected,
+        borderRadius: BorderRadius.circular(40),
+        child: Ink(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+                border: Border.all(
                     color: widget.isSelected
                         ? ThemeColors.primary4
-                        : ThemeColors.gray6),
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              Icon(
-                widget.icon,
-                color: widget.isSelected
-                    ? ThemeColors.primary3
-                    : ThemeColors.gray4,
-              ),
-            ],
-          )),
+                        : ThemeColors.gray4),
+                borderRadius: BorderRadius.circular(40)),
+            child: Row(
+              children: [
+                Text(
+                  widget.text,
+                  style: TypographyStyles.paragraph4().copyWith(
+                      color: widget.isSelected
+                          ? ThemeColors.primary4
+                          : ThemeColors.gray6),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Icon(
+                  widget.icon,
+                  color: widget.isSelected
+                      ? ThemeColors.primary3
+                      : ThemeColors.gray4,
+                ),
+              ],
+            )),
+      ),
     );
   }
 }

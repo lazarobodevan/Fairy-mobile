@@ -15,7 +15,7 @@ class CatalogScreen extends StatefulWidget{
 
 class _CatalogScreenState extends State<CatalogScreen> with TickerProviderStateMixin{
   late final TabController _tabController;
-  double appBarHeight = 180;
+  double appBarHeight = 140;
 
   @override
   void initState() {
@@ -64,8 +64,7 @@ class _CatalogScreenState extends State<CatalogScreen> with TickerProviderStateM
                             Text("Produtores", style: TypographyStyles.paragraph3()),
                           ],
                         ),
-                        const SizedBox(height: 20,),
-                        FilterChipsList(),
+
                       ],
                     ),
                   ),
@@ -76,9 +75,7 @@ class _CatalogScreenState extends State<CatalogScreen> with TickerProviderStateM
           body: TabBarView(
             controller: _tabController,
             children: [
-              Padding(padding:EdgeInsets.fromLTRB(20,0,20,0),
-                child: ProductsTab(),
-              ),
+              ProductsTab(),
               Container(child: Text("oi")),
             ],
           ),
