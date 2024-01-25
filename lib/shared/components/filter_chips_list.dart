@@ -17,7 +17,7 @@ class _FilterChipsListState extends State<FilterChipsList> {
       width: double.maxFinite,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         itemCount: 6,
         itemBuilder: (context, index){
           return CustomFilterChip(onSelected: (){},isSelected: true,icon: Icons.keyboard_arrow_down_rounded,text: "Ordenar",);

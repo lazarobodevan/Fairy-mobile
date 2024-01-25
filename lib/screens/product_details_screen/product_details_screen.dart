@@ -1,7 +1,7 @@
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/product_details_screen/components/confirm_order_bottom_widget.dart';
-import 'package:mobile/screens/product_details_screen/components/producer_details_tile.dart';
+import 'package:mobile/shared/components/producer_details_tile.dart';
 import 'package:mobile/shared/components/custom_app_bar.dart';
 import 'package:mobile/shared/components/custom_dropdown_button.dart';
 import 'package:mobile/shared/components/custom_icon_button.dart';
