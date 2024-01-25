@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/models/filter_chip_options_list_model.dart';
+import 'package:mobile/screens/nav_pages/catalog/components/filter_options.dart';
 
 import 'custom_filter_chip.dart';
 
 class FilterChipsList extends StatefulWidget {
-  const FilterChipsList({super.key});
+  final List<FilterChipOptionsListModel> filterOptions;
+
+  const FilterChipsList({super.key, required this.filterOptions});
 
   @override
   State<FilterChipsList> createState() => _FilterChipsListState();
@@ -18,12 +22,20 @@ class _FilterChipsListState extends State<FilterChipsList> {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        itemCount: 6,
-        itemBuilder: (context, index){
-          return CustomFilterChip(onSelected: (){},isSelected: true,icon: Icons.keyboard_arrow_down_rounded,text: "Ordenar",);
+        itemCount: widget.filterOptions.length,
+        itemBuilder: (context, index) {
+          return CustomFilterChip(
+            onSelected: () {},
+            isSelected: false,
+            icon: Icons.keyboard_arrow_down_rounded,
+            text: widget.filterOptions[index].categoryName,
+            content: FilterOptions(filterOptions: widget.filterOptions[index].options),
+          );
         },
-        separatorBuilder: (context, index){
-          return const SizedBox(width: 10,);
+        separatorBuilder: (context, index) {
+          return const SizedBox(
+            width: 10,
+          );
         },
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/shared/components/filter_option.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
 
@@ -6,6 +7,7 @@ class CustomFilterChip extends StatefulWidget {
   final bool isSelected;
   final IconData icon;
   final String text;
+  final Widget content;
   final Function() onSelected;
 
   const CustomFilterChip(
@@ -13,7 +15,7 @@ class CustomFilterChip extends StatefulWidget {
       this.isSelected = false,
       required this.onSelected,
       required this.icon,
-      required this.text});
+      required this.text, required this.content});
 
   @override
   State<CustomFilterChip> createState() => _CustomFilterChipState();
@@ -24,7 +26,11 @@ class _CustomFilterChipState extends State<CustomFilterChip> {
   Widget build(BuildContext context) {
     return Material(
       child: InkWell(
-        onTap: widget.onSelected,
+        onTap: (){
+          showModalBottomSheet(context: context, builder: (context) {
+            return widget.content;
+          });
+        },
         borderRadius: BorderRadius.circular(40),
         child: Ink(
             padding: EdgeInsets.symmetric(horizontal: 10),
