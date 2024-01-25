@@ -29,7 +29,12 @@ class _FilterChipsListState extends State<FilterChipsList> {
             isSelected: false,
             icon: Icons.keyboard_arrow_down_rounded,
             text: widget.filterOptions[index].categoryName,
-            content: FilterOptions(filterOptions: widget.filterOptions[index].options),
+            content: FilterOptions(
+              filterOptions: widget.filterOptions[index].options,
+              title: widget.filterOptions[index].categoryName,
+              isCustomWidget: widget.filterOptions[index].customWidget != null,
+              customWidget: widget.filterOptions[index].customWidget,
+            ),
           );
         },
         separatorBuilder: (context, index) {

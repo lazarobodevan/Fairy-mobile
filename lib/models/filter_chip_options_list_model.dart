@@ -1,8 +1,10 @@
-import 'package:mobile/models/filter_option_model.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:mobile/models/rounded_filter_option_model.dart';
 
 class FilterChipOptionsListModel{
   final String categoryName;
-  final List<FilterOptionModel> options;
+  Widget? customWidget;
+  final List<RoundedFilterOptionModel>? options;
 
-  FilterChipOptionsListModel({required this.categoryName, required this.options});
+  FilterChipOptionsListModel({required this.categoryName, this.options, this.customWidget});
 }

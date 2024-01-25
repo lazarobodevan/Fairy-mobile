@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/models/filter_chip_options_list_model.dart';
-import 'package:mobile/models/filter_option_model.dart';
+import 'package:mobile/models/rounded_filter_option_model.dart';
 import 'package:mobile/screens/nav_pages/catalog/components/filter_options.dart';
 import 'package:mobile/shared/components/producer_details_tile.dart';
 
@@ -13,26 +13,26 @@ class ProducersTab extends StatelessWidget {
     FilterChipOptionsListModel(
       categoryName: "Ordernar por",
       options: [
-        FilterOptionModel(
+        RoundedFilterOptionModel(
             icon: Icons.swap_vert_rounded,
             label: "Ordenação padrão",
             isSelected: true),
-        FilterOptionModel(
+        RoundedFilterOptionModel(
             icon: Icons.attach_money_rounded,
             label: "Preço",
             isSelected: false),
-        FilterOptionModel(
+        RoundedFilterOptionModel(
             icon: Icons.star_border_outlined,
             label: "Avaliação",
             isSelected: false),
-        FilterOptionModel(
+        RoundedFilterOptionModel(
             icon: Icons.place_outlined,
             label: "Localização",
             isSelected: false),
       ],
     ),
     FilterChipOptionsListModel(categoryName: "Distancia", options: [
-      FilterOptionModel(icon: Icons.add, label: "Add", isSelected: true)
+      RoundedFilterOptionModel(icon: Icons.add, label: "Add", isSelected: true)
     ])
   ];
 

@@ -27,7 +27,7 @@ class _CustomFilterChipState extends State<CustomFilterChip> {
     return Material(
       child: InkWell(
         onTap: (){
-          showModalBottomSheet(context: context, builder: (context) {
+          showModalBottomSheet(context: context, backgroundColor: ThemeColors.white, builder: (context) {
             return widget.content;
           });
         },

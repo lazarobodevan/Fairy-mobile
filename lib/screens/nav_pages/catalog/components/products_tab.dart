@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/models/filter_chip_options_list_model.dart';
-import 'package:mobile/models/filter_option_model.dart';
+import 'package:mobile/models/rounded_filter_option_model.dart';
 import 'package:mobile/screens/nav_pages/catalog/components/filter_options.dart';
+import 'package:mobile/shared/components/custom_button.dart';
+import 'package:mobile/shared/components/distance_slider.dart';
 import 'package:mobile/shared/components/product_tile.dart';
 
 import '../../../../shared/components/filter_chips_list.dart';
@@ -13,19 +15,19 @@ class ProductsTab extends StatelessWidget {
     FilterChipOptionsListModel(
       categoryName: "Ordernar por",
       options: [
-        FilterOptionModel(
+        RoundedFilterOptionModel(
             icon: Icons.swap_vert_rounded,
             label: "Ordenação padrão",
             isSelected: true),
-        FilterOptionModel(
+        RoundedFilterOptionModel(
             icon: Icons.attach_money_rounded,
             label: "Preço",
             isSelected: false),
-        FilterOptionModel(
+        RoundedFilterOptionModel(
             icon: Icons.star_border_outlined,
             label: "Avaliação",
             isSelected: false),
-        FilterOptionModel(
+        RoundedFilterOptionModel(
             icon: Icons.place_outlined,
             label: "Localização",
             isSelected: false),
@@ -33,9 +35,17 @@ class ProductsTab extends StatelessWidget {
     ),
     FilterChipOptionsListModel(
       categoryName: "Distancia",
-      options: [
-        FilterOptionModel(icon: Icons.add, label: "Produto", isSelected: true)
-      ],
+      customWidget: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            DistanceSlider(),
+            const SizedBox(height: 40,),
+            CustomButton(onTap: (){}, text: "Ver resultados")
+          ],
+        ),
+      )
     ),
   ];
 
