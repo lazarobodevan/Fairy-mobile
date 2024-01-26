@@ -19,4 +19,8 @@ class ThemeColors{
   static const Color black = Color(0xFF000000);
   static const Color white = Color(0xFFFFFFFF);
 
+  static const Color pending = Color(0xFFADDEF5);
+  static const Color accepted = Color(0xFFFAFCA7);
+  static const Color concluded = Color(0xFF8DE8A6);
+
 }

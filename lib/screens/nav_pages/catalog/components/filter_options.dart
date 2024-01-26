@@ -36,50 +36,53 @@ class _FilterOptionsState extends State<FilterOptions> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
-            width: 60,
-            height: 10,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: ThemeColors.gray6),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Text(
-            widget.title,
-            style: TypographyStyles.label2(),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          widget.isCustomWidget
-              ? widget.customWidget!
-              : Expanded(
-                  child: GridView.count(
-                    crossAxisCount: 3,
-                    shrinkWrap: true,
-                    children: widget.filterOptions!.asMap().entries.map(
-                      (element) {
-                        final index = element.key;
-                        final option = element.value;
-                        return FilterOption(
-                          icon: option.icon,
-                          label: option.label,
-                          isSelected: option.isSelected,
-                          onTap: () => handleSelectedFilterOption(index),
-                        );
-                      },
-                    ).toList(),
-                  ),
-                )
-        ],
+    return Container(
+      height: 400,
+      child: Center(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: 60,
+              height: 10,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: ThemeColors.gray6),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              widget.title,
+              style: TypographyStyles.label2(),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            widget.isCustomWidget
+                ? widget.customWidget!
+                : Expanded(
+                    child: GridView.count(
+                      crossAxisCount: 3,
+                      shrinkWrap: true,
+                      children: widget.filterOptions!.asMap().entries.map(
+                        (element) {
+                          final index = element.key;
+                          final option = element.value;
+                          return FilterOption(
+                            icon: option.icon,
+                            label: option.label,
+                            isSelected: option.isSelected,
+                            onTap: () => handleSelectedFilterOption(index),
+                          );
+                        },
+                      ).toList(),
+                    ),
+                  )
+          ],
+        ),
       ),
     );
   }

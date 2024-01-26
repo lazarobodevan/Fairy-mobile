@@ -41,7 +41,7 @@ class ProductsTab extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DistanceSlider(),
-            const SizedBox(height: 40,),
+            const SizedBox(height: 30,),
             CustomButton(onTap: (){}, text: "Ver resultados")
           ],
         ),
