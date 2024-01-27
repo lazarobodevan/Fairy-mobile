@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile/models/filter_chip_options_list_model.dart';
 import 'package:mobile/models/rounded_filter_option_model.dart';
 import 'package:mobile/screens/nav_pages/catalog/components/filter_options.dart';
-import 'package:mobile/shared/components/producer_details_tile.dart';
+import 'package:mobile/shared/components/producer_tile.dart';
 
 import '../../../../shared/components/filter_chips_list.dart';
 
@@ -50,7 +50,7 @@ class ProducersTab extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 40),
           sliver: SliverList.separated(
             itemBuilder: (context, index) {
-              return ProducerDetailsTile();
+              return ProducerTile();
             },
             separatorBuilder: (context, index) {
               return const SizedBox(

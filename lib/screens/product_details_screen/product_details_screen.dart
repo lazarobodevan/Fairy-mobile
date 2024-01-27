@@ -1,7 +1,7 @@
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/product_details_screen/components/confirm_order_bottom_widget.dart';
-import 'package:mobile/shared/components/producer_details_tile.dart';
+import 'package:mobile/shared/components/producer_tile.dart';
 import 'package:mobile/shared/components/custom_app_bar.dart';
 import 'package:mobile/shared/components/custom_dropdown_button.dart';
 import 'package:mobile/shared/components/custom_icon_button.dart';
@@ -122,7 +122,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           style: TypographyStyles.label2(),
                         ),
                         const SizedBox(height: 10,),
-                        ProducerDetailsTile()
+                        ProducerTile()
                       ],
                     ),
                   ),
@@ -155,7 +155,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Text("R\$5,98", style: TypographyStyles.label2(),)
                     ],
                   ),
-                  CustomIconButton(onTap: _showBottomSheet,)
+                  CustomIconButton(onTap: _showBottomSheet,icon: Icons.shopping_cart_checkout_outlined, text: "Encomendar")
                 ],
               ),
             ),

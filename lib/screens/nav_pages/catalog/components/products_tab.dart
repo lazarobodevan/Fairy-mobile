@@ -4,7 +4,7 @@ import 'package:mobile/models/rounded_filter_option_model.dart';
 import 'package:mobile/screens/nav_pages/catalog/components/filter_options.dart';
 import 'package:mobile/shared/components/custom_button.dart';
 import 'package:mobile/shared/components/distance_slider.dart';
-import 'package:mobile/shared/components/product_tile.dart';
+import 'package:mobile/shared/components/product_card.dart';
 
 import '../../../../shared/components/filter_chips_list.dart';
 
@@ -70,7 +70,7 @@ class ProductsTab extends StatelessWidget {
             ),
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                return const ProductTile();
+                return const ProductCard();
               },
               childCount: 50,
             ),

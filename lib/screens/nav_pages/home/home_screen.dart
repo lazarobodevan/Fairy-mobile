@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobile/shared/components/custom_label.dart';
 import 'package:mobile/shared/components/custom_text_field.dart';
-import 'package:mobile/shared/components/product_tile.dart';
+import 'package:mobile/shared/components/product_card.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
 
@@ -177,17 +177,17 @@ class HomeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Flexible(child: ProductTile()),
+                      Flexible(child: ProductCard()),
                       SizedBox(width: 10,),
-                      Flexible(child: ProductTile()),
+                      Flexible(child: ProductCard()),
                     ],
                   ),
                   SizedBox(height: 15,),
                   Row(
                     children: [
-                      Flexible(child: ProductTile()),
+                      Flexible(child: ProductCard()),
                       SizedBox(width: 10,),
-                      Flexible(child: ProductTile()),
+                      Flexible(child: ProductCard()),
                     ],
                   )
                 ],

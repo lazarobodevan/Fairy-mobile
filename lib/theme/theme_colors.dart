@@ -22,5 +22,6 @@ class ThemeColors{
   static const Color pending = Color(0xFFADDEF5);
   static const Color accepted = Color(0xFFFAFCA7);
   static const Color concluded = Color(0xFF8DE8A6);
+  static const Color rejected = Color(0xFFE39393);
 
 }

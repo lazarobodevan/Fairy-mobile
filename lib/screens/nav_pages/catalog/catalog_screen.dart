@@ -3,7 +3,7 @@ import 'package:mobile/screens/nav_pages/catalog/components/producers_tab.dart';
 import 'package:mobile/screens/nav_pages/catalog/components/products_tab.dart';
 import 'package:mobile/shared/components/custom_text_field.dart';
 import 'package:mobile/shared/components/filter_chips_list.dart';
-import 'package:mobile/shared/components/product_tile.dart';
+import 'package:mobile/shared/components/product_card.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
 

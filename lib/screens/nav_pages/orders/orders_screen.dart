@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/models/order.dart';
 import 'package:mobile/screens/nav_pages/orders/components/orders_tab.dart';
+import 'package:mobile/shared/Enums/order_status.dart';
 import 'package:mobile/shared/components/custom_app_bar.dart';
 import 'package:mobile/shared/components/custom_text_field.dart';
 import 'package:mobile/theme/theme_colors.dart';
@@ -12,13 +14,14 @@ class OrdersScreen extends StatefulWidget {
   State<OrdersScreen> createState() => _OrdersScreenState();
 }
 
-class _OrdersScreenState extends State<OrdersScreen> with TickerProviderStateMixin {
+class _OrdersScreenState extends State<OrdersScreen>
+    with TickerProviderStateMixin {
   late TabController _tabController;
 
   @override
   void initState() {
     // TODO: implement initState
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
     super.initState();
   }
 
@@ -40,7 +43,9 @@ class _OrdersScreenState extends State<OrdersScreen> with TickerProviderStateMix
                       Icons.search,
                     ),
                   ),
-                  const SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   TabBar(
                     controller: _tabController,
                     indicatorColor: ThemeColors.primary3,
@@ -48,7 +53,9 @@ class _OrdersScreenState extends State<OrdersScreen> with TickerProviderStateMix
                     isScrollable: true,
                     tabAlignment: TabAlignment.start,
                     tabs: [
-                      Tab(child: Text("Pendentes", style: TypographyStyles.paragraph3())),
+                      Tab(
+                          child: Text("Pendentes",
+                              style: TypographyStyles.paragraph3())),
                       Tab(
                         child: Text("Aceitos",
                             style: TypographyStyles.paragraph3()),
@@ -61,6 +68,10 @@ class _OrdersScreenState extends State<OrdersScreen> with TickerProviderStateMix
                         child: Text("Rejeitados",
                             style: TypographyStyles.paragraph3()),
                       ),
+                      Tab(
+                        child: Text("Cancelados",
+                            style: TypographyStyles.paragraph3()),
+                      ),
                     ],
                   )
                 ],
@@ -71,7 +82,80 @@ class _OrdersScreenState extends State<OrdersScreen> with TickerProviderStateMix
         Expanded(
           child: TabBarView(
             controller: _tabController,
-            children: [OrdersTab(), Container(), Container(), Container()],
+            children: [
+              OrdersTab(
+                orders: [
+                  OrderModel(
+                    id: "#123456ABCDEF",
+                    productName: "Cenoura laranja - orgânico",
+                    quantity: "2Kg",
+                    status: OrderStatus.PENDING,
+                    creationDate: "17, Janeiro, 24",
+                    totalValue: "R\$5,98",
+                  ),
+                  OrderModel(
+                    id: "#123456ABCDEF",
+                    productName: "Cenoura laranja - orgânico",
+                    quantity: "2Kg",
+                    status: OrderStatus.PENDING,
+                    creationDate: "17, Janeiro, 24",
+                    totalValue: "R\$5,98",
+                  ),
+                ],
+              ),
+              OrdersTab(orders: [
+                OrderModel(
+                  id: "#123456ABCDEF",
+                  productName: "Cenoura laranja - orgânico",
+                  quantity: "2Kg",
+                  status: OrderStatus.ACCEPTED,
+                  creationDate: "17, Janeiro, 24",
+                  totalValue: "R\$5,98",
+                ),
+                OrderModel(
+                  id: "#123456ABCDEF",
+                  productName: "Cenoura laranja - orgânico",
+                  quantity: "2Kg",
+                  status: OrderStatus.ACCEPTED,
+                  creationDate: "17, Janeiro, 24",
+                  totalValue: "R\$5,98",
+                ),
+              ]),
+              OrdersTab(orders: [
+                OrderModel(
+                  id: "#123456ABCDEF",
+                  productName: "Cenoura laranja - orgânico",
+                  quantity: "2Kg",
+                  status: OrderStatus.CONCLUDED,
+                  creationDate: "17, Janeiro, 24",
+                  totalValue: "R\$5,98",
+                ),
+              ]),
+              OrdersTab(
+                orders: [
+                  OrderModel(
+                    id: "#123456ABCDEF",
+                    productName: "Cenoura laranja - orgânico",
+                    quantity: "2Kg",
+                    status: OrderStatus.REJECTED,
+                    creationDate: "17, Janeiro, 24",
+                    totalValue: "R\$5,98",
+                  ),
+                ],
+              ),
+              OrdersTab(
+                orders: [
+                  OrderModel(
+                    id: "#123456ABCDEF",
+                    productName: "Cenoura laranja - orgânico",
+                    quantity: "2Kg",
+                    status: OrderStatus.CANCELED,
+                    creationDate: "17, Janeiro, 24",
+                    totalValue: "R\$5,98",
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ],

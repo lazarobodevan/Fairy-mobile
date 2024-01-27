@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/models/order.dart';
+import 'package:mobile/shared/Enums/order_status.dart';
 import 'package:mobile/shared/components/action_button.dart';
+import 'package:mobile/shared/components/status_badge.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
 
 class OrderCard extends StatelessWidget {
-  const OrderCard({super.key});
+  final OrderModel order;
+  const OrderCard({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {
@@ -30,26 +34,12 @@ class OrderCard extends StatelessWidget {
               children: [
                 Flexible(
                   flex: 1,
-                  child: Container(
-                    width: 90,
-                    height: 25,
-                    decoration: BoxDecoration(
-                        color: ThemeColors.pending,
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Center(
-                      child: Text(
-                        "Pendente",
-                        style: TypographyStyles.paragraph4().copyWith(
-                          color: const Color(0xFF2845AC),
-                        ),
-                      ),
-                    ),
-                  ),
+                  child: StatusBadge(status: order.status)
                 ),
                 Flexible(
                   flex: 2,
                   child: Text(
-                    "Cenoura laranja - orgânico e bonito",
+                    order.productName,
                     overflow: TextOverflow.ellipsis,
                     style: TypographyStyles.label3(),
                   ),
@@ -57,7 +47,7 @@ class OrderCard extends StatelessWidget {
                 Flexible(
                   flex: 1,
                   child: Text(
-                    "2kg",
+                    order.quantity,
                     style: TypographyStyles.paragraph4(),
                   ),
                 ),
@@ -75,7 +65,7 @@ class OrderCard extends StatelessWidget {
                   children: [
                     Text("ID do pedido", style: TypographyStyles.paragraph4().copyWith(color: ThemeColors.gray6),),
                     const SizedBox(height: 5,),
-                    Text("#ABC12D345EF", style: TypographyStyles.paragraph4(),)
+                    Text(order.id, style: TypographyStyles.paragraph4(),)
                   ],
                 ),
                 Column(
@@ -83,7 +73,7 @@ class OrderCard extends StatelessWidget {
                   children: [
                     Text("Data do pedido", style: TypographyStyles.paragraph4().copyWith(color: ThemeColors.gray6),),
                     const SizedBox(height: 5,),
-                    Text("17, Janeiro, 24", style: TypographyStyles.paragraph4(),)
+                    Text(order.creationDate, style: TypographyStyles.paragraph4(),)
                   ],
                 ),
                 Column(
@@ -91,7 +81,7 @@ class OrderCard extends StatelessWidget {
                   children: [
                     Text("Valor total", style: TypographyStyles.paragraph4().copyWith(color: ThemeColors.gray6),),
                     const SizedBox(height: 5,),
-                    Text("R\$5,96", style: TypographyStyles.paragraph4(),)
+                    Text(order.totalValue, style: TypographyStyles.paragraph4(),)
                   ],
                 )
               ],
@@ -105,7 +95,7 @@ class OrderCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                 ActionButton(isFilled: false, onTap: (){}, text: "Cancelar"),
-                ActionButton(isFilled: true, onTap: (){}, text: "Ver detalhes"),
+                ActionButton(isFilled: true, onTap: (){Navigator.pushNamed(context, "/orderDetails");}, text: "Ver detalhes"),
               ],),
             ),
           )

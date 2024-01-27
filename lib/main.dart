@@ -3,6 +3,7 @@ import 'package:mobile/screens/add_location/add_location_screen.dart';
 import 'package:mobile/screens/location_description/location_description_screen.dart';
 import 'package:mobile/screens/login_screen.dart';
 import 'package:mobile/screens/nav_pages/main_nav_page.dart';
+import 'package:mobile/screens/order_details_screen/order_details_screen.dart';
 import 'package:mobile/screens/product_details_screen/product_details_screen.dart';
 import 'package:mobile/screens/running_status_screen.dart';
 import 'package:mobile/screens/signup/signup_screen.dart';
@@ -48,7 +49,8 @@ class MyApp extends StatelessWidget {
         "/addLocation":(context) => const AddLocationScreen(),
         "/locationDescription":(context) => const LocationDescriptionScreen(),
         "/productDetails":(context) => const ProductDetailsScreen(),
-        "/runningStatus":(context) => const RunningStatusScreen()
+        "/runningStatus":(context) => const RunningStatusScreen(),
+        "/orderDetails":(context) => const OrderDetailsScreen(),
       },
     );
   }

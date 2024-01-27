@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
 
-class ProducerDetailsTile extends StatelessWidget {
-  const ProducerDetailsTile({super.key});
+class ProducerTile extends StatelessWidget {
+  const ProducerTile({super.key});
 
   @override
   Widget build(BuildContext context) {

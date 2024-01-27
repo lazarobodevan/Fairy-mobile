@@ -3,61 +3,69 @@ import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
 
 class ProductTile extends StatelessWidget {
-  const ProductTile({Key? key});
+  const ProductTile({super.key});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.of(context).pushNamed("/productDetails");
-      },
-      child: Ink(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.25),
-              spreadRadius: 0,
-              blurRadius: 4,
-              offset: Offset(0, 4),
+      onTap: () {},
+      borderRadius: BorderRadius.circular(6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: 90,
+            height: 90,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(100),
             ),
-          ],
-          color: ThemeColors.white,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: double.maxFinite,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.network(
-                  "https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                  height: 95,
-                  fit: BoxFit.cover,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(60),
+              child: Image.network(
+                "https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            flex: 3,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Cenoura laranja - orgânicoaaaaaaaa",
+                  style: TypographyStyles.label3(),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
-              ),
+                Text(
+                  "Belo Horizonte - MG",
+                  style: TypographyStyles.label4(),
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.star,
+                      size: 15,
+                    ),
+                    SizedBox(width: 5),
+                    Text("4,65"),
+                  ],
+                )
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
-              child: Column(
-                children: [
-                  Text("Cenoura Laranja - orgânico"),
-                  const SizedBox(height: 6,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("R\$2,89", style: TypographyStyles.label2(),),
-                      Text("1kg", style: TypographyStyles.paragraph4().copyWith(color: ThemeColors.gray6),),
-                    ],
-                  ),
-                  const SizedBox(height: 20,),
-                  Icon(Icons.add_shopping_cart, color: ThemeColors.primary3,),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+          Spacer(),
+          Icon(
+            Icons.keyboard_arrow_right_rounded,
+            size: 30,
+            color: ThemeColors.primary3,
+          )
+        ],
       ),
     );
   }
