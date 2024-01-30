@@ -5,6 +5,7 @@ import 'package:mobile/screens/login_screen.dart';
 import 'package:mobile/screens/nav_pages/main_nav_page.dart';
 import 'package:mobile/screens/order_details_screen/order_details_screen.dart';
 import 'package:mobile/screens/product_details_screen/product_details_screen.dart';
+import 'package:mobile/screens/qr_code_reader/qr_code_reader.dart';
 import 'package:mobile/screens/running_status_screen.dart';
 import 'package:mobile/screens/signup/signup_screen.dart';
 
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
         "/productDetails":(context) => const ProductDetailsScreen(),
         "/runningStatus":(context) => const RunningStatusScreen(),
         "/orderDetails":(context) => const OrderDetailsScreen(),
+        "/scanQRCode": (context) => QRCodeReaderScreen()
       },
     );
   }

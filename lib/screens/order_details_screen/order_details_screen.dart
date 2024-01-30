@@ -302,7 +302,7 @@ class OrderDetailsScreen extends StatelessWidget {
                     ],
                   ),
                   CustomIconButton(
-                    onTap: () {},
+                    onTap: () {Navigator.pushNamed(context, "/scanQRCode");},
                     text: "Retirar",
                     icon: Icons.camera_alt_outlined,
                   ),
