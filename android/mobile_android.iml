@@ -26,4 +26,7 @@
     <orderEntry type="library" name="Flutter for Android" level="project" />
     <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
   </component>
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+  <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
 </module>

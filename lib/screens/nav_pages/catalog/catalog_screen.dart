@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile/screens/nav_pages/catalog/bloc/producers_tab_bloc/tab_bloc.dart';
+import 'package:mobile/screens/nav_pages/catalog/bloc/producers_tab_bloc/tab_event.dart';
 import 'package:mobile/screens/nav_pages/catalog/components/producers_tab.dart';
 import 'package:mobile/screens/nav_pages/catalog/components/products_tab.dart';
+import 'package:mobile/services/producer_service.dart';
+import 'package:mobile/shared/blocs/geolocation/geolocation_bloc.dart';
 import 'package:mobile/shared/components/custom_text_field.dart';
 import 'package:mobile/shared/components/filter_chips_list.dart';
 import 'package:mobile/shared/components/product_card.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
+
+import 'bloc/producers_tab_bloc/tab_state.dart';
 
 class CatalogScreen extends StatefulWidget {
   const CatalogScreen({super.key});
@@ -44,7 +51,9 @@ class _CatalogScreenState extends State<CatalogScreen>
                         Icons.search,
                       ),
                     ),
-                    const SizedBox(height: 20,),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     TabBar(
                       controller: _tabController,
                       indicatorColor: ThemeColors.primary3,
@@ -63,7 +72,28 @@ class _CatalogScreenState extends State<CatalogScreen>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children: [ProductsTab(), ProducersTab()],
+              children: [
+                ProductsTab(),
+
+                //Producers tab
+                BlocProvider(
+                  create: (context) => ProducersTabBloc(
+                    RepositoryProvider.of<ProducerService>(context),
+                    BlocProvider.of<GeolocationBloc>(context).locationData,
+                  )..add(LoadProducersTabEvent()),
+                  child: BlocBuilder<ProducersTabBloc, ProducersTabState>(
+                    builder: (context, state) {
+                      return RefreshIndicator(
+                        onRefresh: () async {
+                          BlocProvider.of<ProducersTabBloc>(context)
+                              .add(LoadProducersTabEvent());
+                        },
+                        child: ProducersTab(),
+                      );
+                    },
+                  ),
+                )
+              ],
             ),
           ),
         ],

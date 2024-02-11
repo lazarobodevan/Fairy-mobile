@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/models/filter_chip_options_list_model.dart';
 import 'package:mobile/models/rounded_filter_option_model.dart';
+import 'package:mobile/screens/nav_pages/catalog/bloc/producers_tab_bloc/tab_bloc.dart';
+import 'package:mobile/screens/nav_pages/catalog/bloc/producers_tab_bloc/tab_event.dart';
+import 'package:mobile/screens/nav_pages/catalog/bloc/producers_tab_bloc/tab_state.dart';
 import 'package:mobile/screens/nav_pages/catalog/components/filter_options.dart';
+import 'package:mobile/services/producer_service.dart';
+import 'package:mobile/shared/blocs/geolocation/geolocation_bloc.dart';
 import 'package:mobile/shared/components/producer_tile.dart';
+import 'package:mobile/shared/repositories/geolocation/geolocation_repository.dart';
+import 'package:mobile/theme/theme_colors.dart';
 
 import '../../../../shared/components/filter_chips_list.dart';
 
@@ -43,19 +51,56 @@ class ProducersTab extends StatelessWidget {
         SliverPadding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           sliver: SliverToBoxAdapter(
-            child: FilterChipsList(filterOptions: optionsPerChip),
+            child: FilterChipsList(
+              filterOptions: optionsPerChip,
+            ),
           ),
         ),
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 40),
-          sliver: SliverList.separated(
-            itemBuilder: (context, index) {
-              return ProducerTile();
-            },
-            separatorBuilder: (context, index) {
-              return const SizedBox(
-                height: 20,
-              );
+          sliver: BlocBuilder<ProducersTabBloc, ProducersTabState>(
+            builder: (context, state) {
+              if (state is ProducersTabLoadingState) {
+                return SliverToBoxAdapter(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              }
+
+              if (state is ProducersTabLoadedState) {
+                var producers = state.producers.data;
+                return SliverList.separated(
+                  itemCount: producers.length,
+                  itemBuilder: (context, index) {
+                    return ProducerTile(producer: producers[index]);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      height: 20,
+                    );
+                  },
+                );
+              }
+              if (state is ProducersTabLoadErrorState) {
+                return const SliverFillRemaining(
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.warning_amber,
+                          size: 40,
+                          color: Colors.red,
+                        ),
+                        Text("Ocorreu um erro ao buscar no servidor :("),
+                      ],
+                    ),
+                  ),
+                );
+              }
+
+              return SizedBox();
             },
           ),
         ),

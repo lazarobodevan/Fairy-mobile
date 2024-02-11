@@ -1,6 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/models/producer_model.dart';
 import 'package:mobile/shared/Enums/order_status.dart';
 import 'package:mobile/shared/components/custom_app_bar.dart';
 import 'package:mobile/shared/components/custom_icon_button.dart';
@@ -264,7 +265,7 @@ class OrderDetailsScreen extends StatelessWidget {
                             const SizedBox(
                               height: 10,
                             ),
-                            ProducerTile()
+                            //ProducerTile(producer: ProducerModel(),)
                           ],
                         ),
                       ],

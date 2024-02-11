@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/models/producer_model.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
 
 class ProducerTile extends StatelessWidget {
-  const ProducerTile({super.key});
+  final ProducerModel producer;
+
+  const ProducerTile({super.key, required this.producer});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: () {},
       borderRadius: BorderRadius.circular(6),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -21,27 +24,55 @@ class ProducerTile extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(60),
-              child: Image.network("https://images.pexels.com/photos/2519332/pexels-photo-2519332.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", fit: BoxFit.cover,),
+              child: producer.picture != null
+                  ? Image.network(
+                      producer.picture!,
+                      fit: BoxFit.cover,
+                    )
+                  : Container(
+                      decoration: const BoxDecoration(color: ThemeColors.gray1),
+                      child: const Icon(
+                        Icons.person,
+                        size: 45,
+                      ),
+                    ),
             ),
           ),
-          const SizedBox(width: 10,),
+          const SizedBox(
+            width: 10,
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Sebastião da Silva", style: TypographyStyles.label3(),),
-              Text("Belo Horizonte - MG", style: TypographyStyles.label4(),),
+              Text(
+                producer.name,
+                style: TypographyStyles.label3(),
+              ),
+              Text(
+                producer.latitude.toString(),
+                style: TypographyStyles.label4(),
+              ),
               Row(
                 children: [
-                  Icon(Icons.star, size: 15,),
-                  const SizedBox(width: 5,),
-                  Text("4,65"),
+                  Icon(
+                    Icons.star,
+                    size: 15,
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text(producer.ratingsAvg.toString()),
                 ],
               )
             ],
           ),
           Spacer(),
-          Icon(Icons.keyboard_arrow_right_rounded,size: 30, color: ThemeColors.primary3,)
+          Icon(
+            Icons.keyboard_arrow_right_rounded,
+            size: 30,
+            color: ThemeColors.primary3,
+          )
         ],
       ),
     );

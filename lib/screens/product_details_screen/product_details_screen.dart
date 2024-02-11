@@ -122,7 +122,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           style: TypographyStyles.label2(),
                         ),
                         const SizedBox(height: 10,),
-                        ProducerTile()
+                        //ProducerTile(name: "Sebastião da Silva", city: "Belo Horizonte - MG",),
                       ],
                     ),
                   ),

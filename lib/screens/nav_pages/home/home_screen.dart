@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mobile/shared/blocs/geolocation/geolocation_bloc.dart';
+import 'package:mobile/shared/components/action_button.dart';
+import 'package:mobile/shared/components/request_location.dart';
 import 'package:mobile/shared/components/custom_label.dart';
 import 'package:mobile/shared/components/custom_text_field.dart';
 import 'package:mobile/shared/components/product_card.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import 'components/svg_category_tile.dart';
 
@@ -22,6 +27,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var geolocationBloc =BlocProvider.of<GeolocationBloc>(context);
+    if(geolocationBloc.locationData == null){
+      geolocationBloc.add(LoadGeolocationEvent());
+    }
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -170,28 +179,38 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: CustomLabel(text: "Nas Suas Proximidades"),
             ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(20,5,20,50),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Flexible(child: ProductCard()),
-                      SizedBox(width: 10,),
-                      Flexible(child: ProductCard()),
-                    ],
-                  ),
-                  SizedBox(height: 15,),
-                  Row(
-                    children: [
-                      Flexible(child: ProductCard()),
-                      SizedBox(width: 10,),
-                      Flexible(child: ProductCard()),
-                    ],
-                  )
-                ],
-              ),
+            BlocBuilder<GeolocationBloc, GeolocationState>(
+              builder: (context, state){
+
+                if(state is GeolocationLoadedState) {
+                  return const Padding(
+                    padding: EdgeInsets.fromLTRB(20, 5, 20, 50),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Flexible(child: ProductCard()),
+                            SizedBox(width: 10,),
+                            Flexible(child: ProductCard()),
+                          ],
+                        ),
+                        SizedBox(height: 15,),
+                        Row(
+                          children: [
+                            Flexible(child: ProductCard()),
+                            SizedBox(width: 10,),
+                            Flexible(child: ProductCard()),
+                          ],
+                        )
+                      ],
+                    ),
+                  );
+                }
+
+                return RequestLocationWidget(state: state,);
+              },
+
             )
           ],
         ),
