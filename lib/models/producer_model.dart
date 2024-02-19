@@ -12,7 +12,7 @@ class ProducerModel {
   String id;
   String name;
   String email;
-  String telephone;
+  String? telephone;
   String? picture;
   String whereToFind;
   double latitude;

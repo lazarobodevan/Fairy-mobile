@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/models/product_model.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({Key? key});
+  final ProductModel product;
+  const ProductCard({Key? key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed("/productDetails");
+        Navigator.of(context).pushNamed("/productDetails", arguments: product.id);
       },
       child: Ink(
         decoration: BoxDecoration(
@@ -32,7 +34,7 @@ class ProductCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
-                  "https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                  product.pictures[0].url,
                   height: 95,
                   fit: BoxFit.cover,
                 ),
@@ -42,13 +44,13 @@ class ProductCard extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
               child: Column(
                 children: [
-                  Text("Cenoura Laranja - orgânico"),
+                  Text(product.name),
                   const SizedBox(height: 6,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("R\$2,89", style: TypographyStyles.label2(),),
-                      Text("1kg", style: TypographyStyles.paragraph4().copyWith(color: ThemeColors.gray6),),
+                      Text("R\$${product.price}", style: TypographyStyles.label2(),),
+                      Text("1 ${product.unit}", style: TypographyStyles.paragraph4().copyWith(color: ThemeColors.gray6),),
                     ],
                   ),
                   const SizedBox(height: 20,),

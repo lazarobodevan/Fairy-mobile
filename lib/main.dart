@@ -12,6 +12,7 @@ import 'package:mobile/screens/qr_code_reader/qr_code_reader.dart';
 import 'package:mobile/screens/running_status_screen.dart';
 import 'package:mobile/screens/signup/signup_screen.dart';
 import 'package:mobile/services/producer_service.dart';
+import 'package:mobile/services/product_service.dart';
 import 'package:mobile/shared/blocs/geolocation/geolocation_bloc.dart';
 import 'package:mobile/shared/repositories/geolocation/geolocation_repository.dart';
 
@@ -35,6 +36,9 @@ class MyApp extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => GeolocationRepository(),
+        ),
+        RepositoryProvider(
+          create: (context) => ProductService(),
         ),
         BlocProvider(
           create: (context) =>
@@ -70,10 +74,14 @@ class MyApp extends StatelessWidget {
           "/addLocation": (context) => const AddLocationScreen(),
           "/locationDescription": (context) =>
               const LocationDescriptionScreen(),
-          "/productDetails": (context) => const ProductDetailsScreen(),
           "/runningStatus": (context) => const RunningStatusScreen(),
           "/orderDetails": (context) => const OrderDetailsScreen(),
           "/scanQRCode": (context) => QRCodeReaderScreen()
+        },
+        onGenerateRoute: (settings) {
+          if(settings.name == "/productDetails"){
+            return MaterialPageRoute(builder: (context) => ProductDetailsScreen(productId: settings.arguments as String));
+          }
         },
       ),
     );

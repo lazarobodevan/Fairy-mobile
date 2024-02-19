@@ -1,12 +1,35 @@
 import 'package:http/http.dart';
 import 'package:mobile/environment.dart';
+import 'package:mobile/models/producer_model.dart';
+import 'package:mobile/models/product_model.dart';
+import 'package:mobile/models/product_request_model.dart';
 
 class ProductService{
 
   getProductById(String id)async{
-    Response response = await get(Uri.parse("${Environment.apiUrl}/Product/productId=$id"));
+    try {
+      Response response = await get(
+          Uri.parse("${Environment.apiUrl}/Product/id=$id"));
+      if (response.statusCode == 200) {
+        var productDetails = productModelFromJson(response.body);
+        return productDetails;
+      }
+    }catch(e){
+      print(e);
+      rethrow;
+    }
+  }
+
+  getNearbyProducts(double latitude, double longitude, int radiusInKm)async{
+    Response response = await get(Uri.parse("${Environment.apiUrl}/Product?latitude=$latitude&longitude=$longitude&radiusInKm=$radiusInKm"));
     if(response.statusCode == 200){
-      print(response.body);
+      try {
+        var products = productRequestModelFromJson(response.body);
+        return products;
+      }catch(e){
+        print(e);
+        rethrow;
+      }
     }
   }
 }

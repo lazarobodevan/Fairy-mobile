@@ -8,7 +8,8 @@ import 'package:mobile/screens/nav_pages/catalog/bloc/producers_tab_bloc/tab_sta
 import 'package:mobile/screens/nav_pages/catalog/components/filter_options.dart';
 import 'package:mobile/services/producer_service.dart';
 import 'package:mobile/shared/blocs/geolocation/geolocation_bloc.dart';
-import 'package:mobile/shared/components/producer_tile.dart';
+import 'package:mobile/shared/components/producer_tile/producer_tile.dart';
+import 'package:mobile/shared/components/producer_tile/producer_tile_skeleton.dart';
 import 'package:mobile/shared/repositories/geolocation/geolocation_repository.dart';
 import 'package:mobile/theme/theme_colors.dart';
 
@@ -61,10 +62,16 @@ class ProducersTab extends StatelessWidget {
           sliver: BlocBuilder<ProducersTabBloc, ProducersTabState>(
             builder: (context, state) {
               if (state is ProducersTabLoadingState) {
-                return SliverToBoxAdapter(
-                  child: Center(
-                    child: CircularProgressIndicator(),
-                  ),
+                return SliverList.separated(
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return const ProducerTileSkeleton();
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      height: 20,
+                    );
+                  },
                 );
               }
 

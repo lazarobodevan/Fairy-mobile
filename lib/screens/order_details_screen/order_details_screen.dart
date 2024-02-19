@@ -5,7 +5,7 @@ import 'package:mobile/models/producer_model.dart';
 import 'package:mobile/shared/Enums/order_status.dart';
 import 'package:mobile/shared/components/custom_app_bar.dart';
 import 'package:mobile/shared/components/custom_icon_button.dart';
-import 'package:mobile/shared/components/producer_tile.dart';
+import 'package:mobile/shared/components/producer_tile/producer_tile.dart';
 import 'package:mobile/shared/components/product_tile.dart';
 import 'package:mobile/shared/components/status_badge.dart';
 import 'package:mobile/theme/theme_colors.dart';

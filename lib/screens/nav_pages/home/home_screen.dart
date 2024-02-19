@@ -6,7 +6,7 @@ import 'package:mobile/shared/components/action_button.dart';
 import 'package:mobile/shared/components/request_location.dart';
 import 'package:mobile/shared/components/custom_label.dart';
 import 'package:mobile/shared/components/custom_text_field.dart';
-import 'package:mobile/shared/components/product_card.dart';
+import 'package:mobile/shared/components/product_card/product_card.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -183,29 +183,34 @@ class HomeScreen extends StatelessWidget {
               builder: (context, state){
 
                 if(state is GeolocationLoadedState) {
-                  return const Padding(
-                    padding: EdgeInsets.fromLTRB(20, 5, 20, 50),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Flexible(child: ProductCard()),
-                            SizedBox(width: 10,),
-                            Flexible(child: ProductCard()),
-                          ],
-                        ),
-                        SizedBox(height: 15,),
-                        Row(
-                          children: [
-                            Flexible(child: ProductCard()),
-                            SizedBox(width: 10,),
-                            Flexible(child: ProductCard()),
-                          ],
-                        )
-                      ],
-                    ),
-                  );
+                  // return const Padding(
+                  //   padding: EdgeInsets.fromLTRB(20, 5, 20, 50),
+                  //   child: Column(
+                  //     children: [
+                  //       Row(
+                  //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //         children: [
+                  //           Flexible(child: ProductCard()),
+                  //           SizedBox(width: 10,),
+                  //           Flexible(child: ProductCard()),
+                  //         ],
+                  //       ),
+                  //       SizedBox(height: 15,),
+                  //       Row(
+                  //         children: [
+                  //           Flexible(child: ProductCard()),
+                  //           SizedBox(width: 10,),
+                  //           Flexible(child: ProductCard()),
+                  //         ],
+                  //       )
+                  //     ],
+                  //   ),
+                  // );
+                  return Center(child: Text("Em construção"),);
+                }
+
+                if(state is GeolocationLoadingState){
+                  return Center(child: CircularProgressIndicator(),);
                 }
 
                 return RequestLocationWidget(state: state,);
