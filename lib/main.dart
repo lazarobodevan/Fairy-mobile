@@ -7,6 +7,7 @@ import 'package:mobile/screens/location_description/location_description_screen.
 import 'package:mobile/screens/login_screen.dart';
 import 'package:mobile/screens/nav_pages/main_nav_page.dart';
 import 'package:mobile/screens/order_details_screen/order_details_screen.dart';
+import 'package:mobile/screens/producer_details_screen/producer_details_screen.dart';
 import 'package:mobile/screens/product_details_screen/product_details_screen.dart';
 import 'package:mobile/screens/qr_code_reader/qr_code_reader.dart';
 import 'package:mobile/screens/running_status_screen.dart';
@@ -81,6 +82,10 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: (settings) {
           if(settings.name == "/productDetails"){
             return MaterialPageRoute(builder: (context) => ProductDetailsScreen(productId: settings.arguments as String));
+          }
+
+          if(settings.name == '/producerDetails'){
+            return MaterialPageRoute(builder: (context) => ProducerDetailsScreen(producerId: settings.arguments as String));
           }
         },
       ),

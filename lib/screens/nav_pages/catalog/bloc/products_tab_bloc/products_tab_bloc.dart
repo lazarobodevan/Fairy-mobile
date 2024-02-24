@@ -18,7 +18,6 @@ class ProductsTabBloc extends Bloc<ProductsTabEvent, ProductsTabState> {
     on<LoadProductsTabEvent>((event, emit) async {
       try{
         if(_locationData == null) return;
-
         final products = await productService.getNearbyProducts(_locationData!.latitude!, _locationData!.longitude!, 2);
         emit(ProductsTabLoadedState(products: products));
 

@@ -11,7 +11,9 @@ class ProducerTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).pushNamed("/producerDetails", arguments: producer.id);
+      },
       borderRadius: BorderRadius.circular(6),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
