@@ -47,6 +47,10 @@ class ProducersTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var geolocationBloc =BlocProvider.of<GeolocationBloc>(context);
+    if(geolocationBloc.locationData == null){
+      geolocationBloc.add(LoadGeolocationEvent());
+    }
     return CustomScrollView(
       slivers: [
         SliverPadding(

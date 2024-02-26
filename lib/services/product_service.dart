@@ -1,8 +1,7 @@
 import 'package:http/http.dart';
 import 'package:mobile/environment.dart';
-import 'package:mobile/models/producer_model.dart';
-import 'package:mobile/models/product_model.dart';
-import 'package:mobile/models/product_request_model.dart';
+import 'package:mobile/models/product/product_model.dart';
+import 'package:mobile/models/product/product_request_model.dart';
 
 class ProductService {
 

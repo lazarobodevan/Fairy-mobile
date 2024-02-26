@@ -4,6 +4,7 @@ import 'package:mobile/models/filter_chip_options_list_model.dart';
 import 'package:mobile/models/rounded_filter_option_model.dart';
 import 'package:mobile/screens/nav_pages/catalog/bloc/products_tab_bloc/products_tab_bloc.dart';
 import 'package:mobile/screens/nav_pages/catalog/components/filter_options.dart';
+import 'package:mobile/shared/blocs/geolocation/geolocation_bloc.dart';
 import 'package:mobile/shared/components/custom_button.dart';
 import 'package:mobile/shared/components/distance_slider.dart';
 import 'package:mobile/shared/components/product_card/product_card.dart';
@@ -55,6 +56,10 @@ class ProductsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var geolocationBloc =BlocProvider.of<GeolocationBloc>(context);
+    if(geolocationBloc.locationData == null){
+      geolocationBloc.add(LoadGeolocationEvent());
+    }
     return CustomScrollView(
       slivers: [
         SliverPadding(

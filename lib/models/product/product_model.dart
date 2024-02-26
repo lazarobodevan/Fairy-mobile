@@ -4,8 +4,8 @@
 
 import 'dart:convert';
 
-import 'package:mobile/models/producer_model.dart';
-import 'package:mobile/models/product_picture_model.dart';
+import 'package:mobile/models/producer/producer_model.dart';
+import 'package:mobile/models/product/product_picture_model.dart';
 
 ProductModel productModelFromJson(String str) => ProductModel.fromJson(json.decode(str));
 

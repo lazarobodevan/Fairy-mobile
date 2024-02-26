@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:location/location.dart';
-import 'package:mobile/models/product_request_model.dart';
+import 'package:mobile/models/product/product_request_model.dart';
 import 'package:mobile/services/product_service.dart';
 
 part 'products_tab_event.dart';

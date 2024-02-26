@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:mobile/models/producer_model.dart';
-import 'package:mobile/models/producer_request_model.dart';
+import 'package:mobile/models/producer/producer_request_model.dart';
+
 
 abstract class ProducersTabState extends Equatable{
   const ProducersTabState();

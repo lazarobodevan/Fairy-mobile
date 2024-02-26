@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/models/producer_model.dart';
+import 'package:mobile/models/producer/producer_model.dart';
 import 'package:mobile/theme/theme_colors.dart';
 import 'package:mobile/theme/typography_styles.dart';
 
@@ -52,7 +52,7 @@ class ProducerTile extends StatelessWidget {
                 style: TypographyStyles.label3(),
               ),
               Text(
-                producer.latitude.toString(),
+                producer.location.city,
                 style: TypographyStyles.label4(),
               ),
               Row(

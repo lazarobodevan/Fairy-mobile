@@ -4,7 +4,8 @@
 
 import 'dart:convert';
 
-import 'package:mobile/models/producer_model.dart';
+import 'package:mobile/models/producer/producer_model.dart';
+
 
 ProducerRequestModel producerRequestModelFromJson(String str) => ProducerRequestModel.fromJson(json.decode(str));
 
@@ -14,8 +15,8 @@ class ProducerRequestModel {
   int pages;
   int currentPage;
   int offset;
-  dynamic nextUrl;
-  dynamic previousUrl;
+  String? nextUrl;
+  String? previousUrl;
   List<ProducerModel> data;
 
   ProducerRequestModel({
@@ -42,7 +43,7 @@ class ProducerRequestModel {
     "offset": offset,
     "nextUrl": nextUrl,
     "previousUrl": previousUrl,
-    "data": List<dynamic>.from(data.map((x) => x.toJson())),
+    "data": List<ProducerModel>.from(data.map((x) => x.toJson())),
   };
 }
 

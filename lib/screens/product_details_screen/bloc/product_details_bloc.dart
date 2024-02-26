@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:mobile/models/product_model.dart';
+import 'package:mobile/models/product/product_model.dart';
 import 'package:mobile/services/product_service.dart';
 
 part 'product_details_event.dart';

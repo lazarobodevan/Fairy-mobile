@@ -1,8 +1,6 @@
-// To parse this JSON data, do
-//
-//     final producerModel = producerModelFromJson(jsonString);
-
 import 'dart:convert';
+
+import 'package:mobile/models/location/location_model.dart';
 
 ProducerModel producerModelFromJson(String str) => ProducerModel.fromJson(json.decode(str));
 
@@ -12,11 +10,10 @@ class ProducerModel {
   String id;
   String name;
   String email;
-  String? telephone;
+  String telephone;
   String? picture;
   String whereToFind;
-  double latitude;
-  double longitude;
+  LocationModel location;
   int ratingsAvg;
   int ratingsCount;
   DateTime createdAt;
@@ -30,8 +27,7 @@ class ProducerModel {
     required this.telephone,
     required this.picture,
     required this.whereToFind,
-    required this.latitude,
-    required this.longitude,
+    required this.location,
     required this.ratingsAvg,
     required this.ratingsCount,
     required this.createdAt,
@@ -44,10 +40,9 @@ class ProducerModel {
     name: json["name"],
     email: json["email"],
     telephone: json["telephone"],
-    picture: json["picture"]?["url"],
+    picture: json["picture"],
     whereToFind: json["whereToFind"],
-    latitude: json["latitude"]?.toDouble(),
-    longitude: json["longitude"]?.toDouble(),
+    location: LocationModel.fromJson(json["location"]),
     ratingsAvg: json["ratingsAvg"],
     ratingsCount: json["ratingsCount"],
     createdAt: DateTime.parse(json["createdAt"]),
@@ -62,8 +57,7 @@ class ProducerModel {
     "telephone": telephone,
     "picture": picture,
     "whereToFind": whereToFind,
-    "latitude": latitude,
-    "longitude": longitude,
+    "location": location.toJson(),
     "ratingsAvg": ratingsAvg,
     "ratingsCount": ratingsCount,
     "createdAt": createdAt.toIso8601String(),

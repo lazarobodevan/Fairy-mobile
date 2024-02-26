@@ -4,7 +4,8 @@
 
 import 'dart:convert';
 
-import 'package:mobile/models/product_model.dart';
+import 'package:mobile/models/product/product_model.dart';
+
 
 ProductRequestModel productRequestModelFromJson(String str) => ProductRequestModel.fromJson(json.decode(str));
 
