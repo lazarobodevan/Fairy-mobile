@@ -58,7 +58,7 @@ class Products {
         offset: json["offset"],
         nextUrl: json["nextUrl"],
         previousUrl: json["previousUrl"],
-        data: List<ProductModel>.from(json["data"].map((x) => x)),
+        data: List<ProductModel>.from(json["data"].map((x) => ProductModel.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {

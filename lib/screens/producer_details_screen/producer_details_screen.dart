@@ -209,12 +209,14 @@ class _ProducerDetailsScreenState extends State<ProducerDetailsScreen>
               physics: AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.only(
                   top: 20, left: 20, right: 20, bottom: 40),
+
               itemCount: products.length,
               gridDelegate:
               const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 10.0,
+                childAspectRatio: 0.8
               ),
               itemBuilder: (BuildContext context, int index) {
                 return ProductCard(product: products[index]);

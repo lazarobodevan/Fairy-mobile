@@ -17,7 +17,7 @@ class ProductModel {
   String description;
   List<ProductPictureModel> pictures;
   String category;
-  int price;
+  double price;
   String unit;
   int availableQuantity;
   bool isOrganic;
@@ -50,7 +50,7 @@ class ProductModel {
     description: json["description"],
     pictures: List<ProductPictureModel>.from(json["pictures"].map((x) => ProductPictureModel.fromJson(x))),
     category: json["category"],
-    price: json["price"],
+    price: json["price"].toDouble(),
     unit: json["unit"],
     availableQuantity: json["availableQuantity"],
     isOrganic: json["isOrganic"],
